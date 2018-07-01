@@ -1,0 +1,13 @@
+@import "../variables";
+
+.page-header {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  height: 60px;
+  border-bottom: 1px solid $border-color;
+  box-shadow: 1px 1.7px 5.6px 0.4px rgba(41, 53, 84, 0.06);
+  color: $primary-text-color;
+  padding: 0 40px;
+}
