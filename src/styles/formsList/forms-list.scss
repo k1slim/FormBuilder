@@ -2,6 +2,8 @@
 
 .forms-list {
   height: calc(100vh - 60px);
-  background: $background-color;
-  padding: 40px;
+  margin: 40px;
+  border: $border-color;
+  border-radius: $border-radius;
+  background: white;
 }
