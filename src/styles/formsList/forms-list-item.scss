@@ -1,0 +1,28 @@
+@import "../variables";
+
+.forms-list-item {
+  display: flex;
+  padding: 15px 30px;
+  border-bottom: 1px solid $border-color;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  &:hover {
+    background-color: $primary-color-light;
+    .far {
+      opacity: 1;
+    }
+  }
+  .form-title {
+    font-size: 16px;
+    font-weight: 500;
+    flex: 1;
+  }
+  .far {
+    margin-left: auto;
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+    opacity: 0;
+    transition: opacity 0.3s, color 0.3s;
+  }
+}

@@ -6,7 +6,7 @@ import Header from '../../components/main/Header';
 import FormsListContainer from './FormsListContainer';
 
 const FormsListPage = () => (
-    <section className="forms-list-page">
+    <section className="page forms-list-page">
         <Header title={wordings.FORMS_LIST} />
         <FormsListContainer />
     </section>
