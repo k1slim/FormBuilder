@@ -1,16 +1,38 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { withRouter } from 'react-router';
+import { connect } from 'react-redux';
 
 import TabsContainer from '../tabs/TabsContainer';
 
+import * as actions from '../../actions';
+
 import '../../styles/formsList/forms-list.scss';
 
-const FormContainer = props => (
-    <div className="form">
-        <TabsContainer
-            formUuid={props.params.formUuid}
-            activeTabUuid={props.params.tabUuid}
-        />
-    </div>
-);
+class FormContainer extends Component {
+    componentDidMount() {
+        const { match: { params }, getForm } = this.props;
 
-export default FormContainer;
+        getForm(params);
+    }
+
+    render() {
+        const { match: { params } } = this.props;
+
+        return (
+            <div className="form">
+                <TabsContainer
+                    formUuid={params.formUuid}
+                    activeTabUuid={params.tabUuid}
+                />
+            </div>
+        );
+    }
+}
+
+const mapStateToProps = () => ({});
+
+const mapDispatchToProps = {
+    getForm: actions.getForm
+};
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(FormContainer));

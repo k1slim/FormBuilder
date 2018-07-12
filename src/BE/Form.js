@@ -1,7 +1,7 @@
 const TABS = uuid => `$TABS-${uuid}`;
 
 export const getTabs = (payload) => {
-    const obj = localStorage.getItem(TABS(payload.uuid));
+    const obj = localStorage.getItem(TABS(payload.formUuid));
 
     if (obj) {
         return JSON.parse(obj);

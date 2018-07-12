@@ -3,6 +3,10 @@ import { createReducer } from 'redux-create-reducer';
 import * as Types from '../constants';
 
 export const form = createReducer({}, {
+    [Types.SET_TABS](state, action) {
+        return { ...state, tabs: action.payload.tabs };
+    },
+
     [Types.ADD_TAB](state, action) {
         const newTab = { [action.payload.uuid]: action.payload };
 

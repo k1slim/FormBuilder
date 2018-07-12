@@ -37,6 +37,7 @@ class FormsListContainer extends Component {
                     {Object.values(forms).map(form => (
                         <FormsListItem
                             key={form.uuid}
+                            uuid={form.uuid}
                             name={form.name}
                             deleteForm={() => this.deleteForm(form.uuid)} />
                     ))}
