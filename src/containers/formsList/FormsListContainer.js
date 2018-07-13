@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import * as actions from '../../actions';
-
 import Button from '../../components/elements/Button';
+import FormsListItemContainer from './FormsListItemContainer';
 
+import * as actions from '../../actions';
 import wordings from '../../constants/wordings';
 import { generateGUID } from '../../helpers/guid';
-import FormsListItem from '../../components/formsList/FormsListItem';
 
 import '../../styles/formsList/forms-list.scss';
 
@@ -16,30 +15,27 @@ class FormsListContainer extends Component {
         super(props);
 
         this.addForm = this.addForm.bind(this);
-        this.deleteForm = this.deleteForm.bind(this);
     }
 
     addForm() {
         this.props.addForm({ uuid: generateGUID(), name: 'Untitled' });
     }
 
-    deleteForm(uuid) {
-        this.props.deleteForm({ uuid });
-    }
-
     render() {
-        const { forms } = this.props;
+        const { forms, updateForm, deleteForm } = this.props;
 
         return (
-            <div className="forms-list">
+            <div className="forms-list-wrapper">
                 <Button text={wordings.ADD_FORM} onClick={this.addForm} />
-                <div>
+                <div className="forms-list">
                     {Object.values(forms).map(form => (
-                        <FormsListItem
+                        <FormsListItemContainer
                             key={form.uuid}
                             uuid={form.uuid}
                             name={form.name}
-                            deleteForm={() => this.deleteForm(form.uuid)} />
+                            deleteForm={deleteForm}
+                            updateForm={updateForm}
+                        />
                     ))}
                 </div>
             </div>
@@ -53,7 +49,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
     addForm: actions.addForm,
-    deleteForm: actions.deleteForm
+    deleteForm: actions.deleteForm,
+    updateForm: actions.updateForm
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(FormsListContainer);

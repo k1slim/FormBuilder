@@ -10,3 +10,8 @@ export const deleteForm = payload => (dispatch) => {
     BE.deleteForm(payload);
     dispatch(({ type: Types.DELETE_FORM, payload }));
 };
+
+export const updateForm = payload => (dispatch) => {
+    BE.updateForm(payload);
+    dispatch(({ type: Types.UPDATE_FORM, payload }));
+};

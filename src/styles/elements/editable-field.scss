@@ -1,0 +1,17 @@
+@import "../variables";
+
+.editable-field {
+  width: 100%;
+  min-width: 10px;
+  height: auto;
+  margin: -2px 0 0;
+  border: none;
+  border-bottom: 1px solid $text-color-c1;
+  background: transparent;
+  padding: 0 0 2px;
+  box-sizing: border-box;
+  outline: none !important;
+  cursor: text;
+  font: inherit;
+  line-height: inherit;
+}

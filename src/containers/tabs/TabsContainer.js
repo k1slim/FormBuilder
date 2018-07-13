@@ -17,6 +17,7 @@ class TabsContainer extends Component {
         this.state = { tabs: {} };
 
         this.addTab = this.addTab.bind(this);
+        this.copyTab = this.copyTab.bind(this);
     }
 
     static getDerivedStateFromProps(props, state) {
@@ -35,12 +36,15 @@ class TabsContainer extends Component {
         this.props.addTab({ formUuid, uuid: generateGUID(), name: 'Untitled' });
     }
 
+    copyTab(tab) {
+        this.props.addTab({ ...tab, uuid: generateGUID() });
+    }
+
     render() {
         const {
             activeTabUuid,
             deleteTab,
-            updateTab,
-            copyTab
+            updateTab
         } = this.props;
         const { tabs } = this.state;
 
@@ -52,8 +56,8 @@ class TabsContainer extends Component {
                         isActive={activeTabUuid === tab.uuid}
                         tab={tab}
                         updateTab={updateTab}
-                        copyTab={() => copyTab(tab)}
-                        deleteTab={() => deleteTab(tab)}
+                        copyTab={this.copyTab}
+                        deleteTab={deleteTab}
                     />
                 ))}
                 <Button text={wordings.ADD_TAB} onClick={this.addTab} />
@@ -68,7 +72,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = {
     addTab: actions.addTab,
-    copyTab: actions.copyTab,
     updateTab: actions.updateTab,
     deleteTab: actions.deleteTab
 };

@@ -5,6 +5,7 @@ export const wordings = {
     // actions
     RENAME: 'Rename',
     DELETE: 'Delete',
+    COPY: 'Copy',
 
     ADD_FORM: 'add new form',
 

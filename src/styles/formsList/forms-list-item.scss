@@ -1,13 +1,18 @@
 @import "../variables";
+@import "../mixins";
 
 .forms-list-item {
-  display: flex;
-  padding: 15px 30px;
+  height: 50px;
   border-bottom: 1px solid $border-color;
   cursor: pointer;
   transition: background-color 0.3s;
+  a {
+    display: flex;
+    padding: 15px 30px 10px;
+    text-decoration: none;
+  }
   &:hover {
-    background-color: $primary-color-light;
+    background-color: $element-color-f7;
     .far {
       opacity: 1;
     }
@@ -15,14 +20,20 @@
   .form-title {
     font-size: 16px;
     font-weight: 500;
-    flex: 1;
+    color: $primary-text-color;
+    cursor: text;
+    @include cut-text;
   }
   .far {
-    margin-left: auto;
-    &:not(:last-child) {
-      margin-right: 10px;
-    }
+    color: $icon-primary-color;
     opacity: 0;
     transition: opacity 0.3s, color 0.3s;
+    &:not(:last-child) {
+      margin-left: auto;
+      margin-right: 10px;
+    }
+    &:hover {
+      color: $icon-primary-color-hover;
+    }
   }
 }

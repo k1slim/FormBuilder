@@ -1,9 +1,18 @@
 @import "../variables";
+@import "../scrollbars";
 
-.forms-list, .form {
-  height: calc(100vh - 60px);
+.forms-list-wrapper, .form {
+  height: calc(100vh - 140px);
   margin: 40px;
   border: $border-color;
   border-radius: $border-radius;
   background: white;
+}
+
+.forms-list-wrapper {
+  .forms-list {
+    max-height: calc(100% - 34px);
+    overflow: auto;
+    @include small-scroll;
+  }
 }

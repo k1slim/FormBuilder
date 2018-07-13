@@ -14,6 +14,21 @@ export const formsList = createReducer({}, {
         delete forms[action.payload.uuid];
 
         return { ...state, forms };
+    },
+
+    [Types.UPDATE_FORM](state, action) {
+        const form = state.forms[action.payload.uuid];
+
+        return {
+            ...state,
+            forms: {
+                ...state.forms,
+                [action.payload.uuid]: {
+                    ...form,
+                    ...action.payload
+                }
+            }
+        };
     }
 });
 

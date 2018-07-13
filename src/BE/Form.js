@@ -10,6 +10,10 @@ export const getTabs = (payload) => {
     return {};
 };
 
+export const deleteTabs = (payload) => {
+    localStorage.removeItem(TABS(payload.formUuid));
+};
+
 export const addTab = (payload) => {
     let obj = localStorage.getItem(TABS(payload.formUuid));
 
