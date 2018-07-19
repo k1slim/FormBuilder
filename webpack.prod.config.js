@@ -45,6 +45,7 @@ module.exports = {
                     {
                         loader: 'babel-loader',
                         options: {
+                            plugins: ['transform-decorators-legacy'],
                             presets: ['env', 'react', 'stage-0']
                         }
                     }
