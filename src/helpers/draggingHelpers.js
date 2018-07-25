@@ -42,7 +42,6 @@ export const moveItems = (items, itemUuid, overItemUuid) => {
         }
     });
 
-    console.log(sourceIndex, distIndex);
     if (sourceIndex === -1 || distIndex === -1) {
         return items;
     }

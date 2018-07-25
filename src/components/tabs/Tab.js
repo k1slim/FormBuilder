@@ -13,6 +13,7 @@ const Tab = (props) => {
         name,
         isEditing,
         isActive,
+        isDragging,
         deleteTab,
         copyTab,
         processRename,
@@ -20,7 +21,7 @@ const Tab = (props) => {
     } = props;
 
     return (
-        <div className={classNames('tab', { active: isActive })}>
+        <div className={classNames('tab', { active: isActive, dragging: isDragging })}>
             <span className="tab-name" onClick={enableEditing}>
                 <EditableField
                     isEditing={isEditing}

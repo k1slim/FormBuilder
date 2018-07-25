@@ -9,7 +9,12 @@ import DraggableTabContainer from './DraggableTabContainer';
 import * as actions from '../../actions';
 import wordings from '../../constants/wordings';
 import { generateGUID } from '../../helpers/guid';
-import { afterDrop, moveItems, sortByPositions } from '../../helpers/draggingHelpers';
+import {
+    afterDrop,
+    getPosition,
+    moveItems,
+    sortByPositions
+} from '../../helpers/draggingHelpers';
 
 import '../../styles/tabs/tabs.scss';
 
@@ -26,13 +31,12 @@ class TabsContainer extends Component {
         this.afterDrop = this.afterDrop.bind(this);
     }
 
-    static getDerivedStateFromProps(props, state) {
-        // todo array and object
-        console.log('getDerivedStateFromProps');
-        if (props.tabs !== state.tabs) {
-            return {
-                tabs: sortByPositions(Object.values(props.tabs))
-            };
+    // eslint-disable-next-line camelcase
+    UNSAFE_componentWillReceiveProps(nextProps) {
+        if (nextProps.tabs !== this.props.tabs) {
+            this.setState({
+                tabs: sortByPositions(Object.values(nextProps.tabs))
+            });
         }
 
         return null;
@@ -40,12 +44,24 @@ class TabsContainer extends Component {
 
     addTab() {
         const { formUuid } = this.props;
+        const { tabs } = this.state;
 
-        this.props.addTab({ formUuid, uuid: generateGUID(), name: 'Untitled' });
+        this.props.addTab({
+            formUuid,
+            uuid: generateGUID(),
+            name: tabs.length.toString(),
+            ...getPosition({ prevPos: tabs[tabs.length - 1] })
+        });
     }
 
     copyTab(tab) {
-        this.props.addTab({ ...tab, uuid: generateGUID() });
+        const { tabs } = this.state;
+
+        this.props.addTab({
+            ...tab,
+            uuid: generateGUID(),
+            ...getPosition({ prevPos: tabs[tabs.length - 1] })
+        });
     }
 
     moveItems(draggedUuid, overUuid) {
@@ -53,8 +69,6 @@ class TabsContainer extends Component {
 
         const newTabs = moveItems(tabs, draggedUuid, overUuid);
 
-
-        console.log(tabs !== newTabs);
         if (tabs !== newTabs) {
             this.setState({ tabs: newTabs });
         }
@@ -63,13 +77,13 @@ class TabsContainer extends Component {
     afterDrop(uuid) {
         const { tabs } = this.state;
 
-        const newTabs = afterDrop(tabs, uuid);
+        const tab = afterDrop(tabs, uuid);
 
         this.props.updateTab({
-            formUuid: newTabs.formUuid,
-            uuid: newTabs.uuid,
-            posN: newTabs.posN,
-            posD: newTabs.posD
+            formUuid: tab.formUuid,
+            uuid: tab.uuid,
+            posN: tab.posN,
+            posD: tab.posD
         });
     }
 

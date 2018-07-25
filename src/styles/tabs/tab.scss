@@ -2,6 +2,7 @@
 @import "../mixins";
 
 .tab {
+  position: relative;
   display: flex;
   align-items: center;
   height: 40px;
@@ -14,6 +15,18 @@
   padding: 0 20px;
   font-size: 16px;
   cursor: pointer;
+  &.dragging {
+    &:after {
+      content: ' ';
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: $dark-border-color;
+    }
+  }
   .tab-name {
     flex: 1;
     margin-right: 15px;

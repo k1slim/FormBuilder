@@ -56,6 +56,7 @@ class TabContainer extends Component {
         const {
             tab,
             isActive,
+            isDragging,
             isEditing,
             toggleEditingState,
             enableEditing
@@ -64,6 +65,7 @@ class TabContainer extends Component {
         return (
             <Tab
                 isEditing={isEditing}
+                isDragging={isDragging}
                 isActive={isActive}
                 uuid={tab.uuid}
                 name={tab.name}
