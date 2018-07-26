@@ -50,7 +50,8 @@ class TabsContainer extends Component {
             formUuid,
             uuid: generateGUID(),
             name: tabs.length.toString(),
-            ...getPosition({ prevPos: tabs[tabs.length - 1] })
+            ...getPosition({ prevPos: tabs[tabs.length - 1] }),
+            createdAt: Date.now()
         });
     }
 
@@ -60,7 +61,8 @@ class TabsContainer extends Component {
         this.props.addTab({
             ...tab,
             uuid: generateGUID(),
-            ...getPosition({ prevPos: tabs[tabs.length - 1] })
+            ...getPosition({ prevPos: tabs[tabs.length - 1] }),
+            createdAt: Date.now()
         });
     }
 

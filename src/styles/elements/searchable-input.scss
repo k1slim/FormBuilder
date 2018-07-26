@@ -1,0 +1,40 @@
+@import "../variables";
+
+.searchable-input {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 300px;
+  &.medium {
+    height: 34px;
+  }
+  &.small {
+    height: 28px;
+  }
+  .input {
+    padding: 0 30px;
+  }
+  .input:focus + .fa-search {
+    color: $primary-color;
+  }
+  .input:focus ~ .fa-times {
+    opacity: 1;
+  }
+  .fa-search {
+    position: absolute;
+    color: $text-color-c1;
+    left: 10px;
+    transition: color 0.3s;
+  }
+  .fa-times {
+    position: absolute;
+    right: 10px;
+    color: $text-color-c1;
+    opacity: 0;
+    cursor: pointer;
+    transition: color 0.3s, opacity 0.3s;
+    &:hover {
+      color: $primary-color;
+    }
+  }
+}

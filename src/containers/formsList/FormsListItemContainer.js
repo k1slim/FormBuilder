@@ -47,6 +47,7 @@ class FormsListItemContainer extends Component {
         const {
             uuid,
             name,
+            createdAt,
             isEditing,
             enableEditing
         } = this.props;
@@ -56,6 +57,7 @@ class FormsListItemContainer extends Component {
                 isEditing={isEditing}
                 uuid={uuid}
                 name={name}
+                createdAt={createdAt}
                 processRename={this.processRename}
                 enableEditing={enableEditing}
                 deleteForm={this.deleteForm}

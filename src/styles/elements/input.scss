@@ -1,0 +1,47 @@
+@import "../variables";
+
+@mixin placeholder-styles {
+  font-family: Roboto, sans-serif;
+  color: $text-color-c1;
+  letter-spacing: 0.3px;
+  font-weight: 400;
+}
+
+.input {
+  width: 100%;
+  height: 40px;
+  border: 1px solid $text-color-c1;
+  border-radius: $border-radius;
+  padding: 0 12px;
+  outline: none;
+  box-sizing: border-box;
+  font-size: 14px;
+  color: $primary-text-color;
+  transition: border-color 0.3s;
+  &::-webkit-input-placeholder {
+    @include placeholder-styles;
+  }
+  &::-moz-placeholder {
+    @include placeholder-styles;
+  }
+  &:-ms-input-placeholder {
+    @include placeholder-styles;
+  }
+  &:-moz-placeholder {
+    @include placeholder-styles;
+  }
+  &.medium {
+    height: 34px;
+  }
+  &.small {
+    height: 28px;
+  }
+  &:focus {
+    border-color: $primary-color;
+  }
+  &[disabled] {
+    color: $text-color-c1;
+    background-color: $element-color-f7;
+    border-color: $dark-border-color;
+  }
+}

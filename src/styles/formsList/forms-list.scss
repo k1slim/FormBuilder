@@ -10,8 +10,13 @@
 }
 
 .forms-list-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.forms-list-wrapper {
   .forms-list {
-    max-height: calc(100% - 34px);
+    flex-grow: 1;
     overflow: auto;
     @include small-scroll;
   }

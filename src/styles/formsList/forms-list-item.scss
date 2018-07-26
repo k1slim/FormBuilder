@@ -2,38 +2,48 @@
 @import "../mixins";
 
 .forms-list-item {
-  height: 50px;
-  border-bottom: 1px solid $border-color;
-  cursor: pointer;
-  transition: background-color 0.3s;
   a {
     display: flex;
-    padding: 15px 30px 10px;
+    align-items: center;
+    height: 50px;
+    border-bottom: 1px solid $dark-border-color;
+    cursor: pointer;
+    transition: background-color 0.3s;
     text-decoration: none;
   }
   &:hover {
     background-color: $element-color-f7;
-    .far {
-      opacity: 1;
-    }
   }
-  .form-title {
-    font-size: 16px;
-    font-weight: 500;
+  .col {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 30px;
     color: $primary-text-color;
-    cursor: text;
-    @include cut-text;
-  }
-  .far {
-    color: $icon-primary-color;
-    opacity: 0;
-    transition: opacity 0.3s, color 0.3s;
-    &:not(:last-child) {
-      margin-left: auto;
-      margin-right: 10px;
+    min-width: 15%;
+    &.form-title {
+      min-width: 75%;
+      font-size: 16px;
+      font-weight: 500;
+      span {
+        cursor: text;
+        @include cut-text;
+      }
     }
-    &:hover {
-      color: $icon-primary-color-hover;
+    &.created-at {
+      font-size: 13px;
+    }
+    &.actions-col {
+      border-left: 1px solid $dark-border-color;
+      min-width: 10%;
+      justify-content: space-around;
+    }
+    .far {
+      color: $icon-primary-color;
+      transition: color 0.3s;
+      &:hover {
+        color: $icon-primary-color-hover;
+      }
     }
   }
 }

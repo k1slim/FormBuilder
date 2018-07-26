@@ -1,0 +1,39 @@
+@import "../variables";
+
+.forms-list-header {
+  border-bottom: 2px solid $dark-border-color;
+  .search-block {
+    display: flex;
+    padding: 20px 30px;
+    .btn {
+      margin-left: auto;
+      width: 180px;
+    }
+  }
+  .table-header {
+    display: flex;
+    .row {
+      min-width: 15%;
+      padding: 20px 30px;
+      font-size: 16px;
+      font-weight: bold;
+      letter-spacing: 0.3px;
+      transition: background-color 0.3s;
+      &:not(.actions-row):hover {
+        cursor: pointer;
+        background-color: $element-color-f7;
+      }
+      &.title-row {
+        min-width: 75%;
+      }
+      &.actions-row {
+        min-width: 10%;
+        text-align: center;
+      }
+      .fas {
+        margin-top: -1px;
+        margin-left: 10px;
+      }
+    }
+  }
+}
