@@ -37,3 +37,48 @@
     }
   }
 }
+
+@media all and (max-width: 1200px) {
+  .forms-list-header {
+    .search-block {
+      padding: 20px 15px;
+      .btn {
+
+      }
+    }
+    .table-header {
+      .row {
+        &.title-row, &.actions-row, &.created-at-row {
+          padding: 20px 15px;
+          min-width: 80px;
+        }
+        &.title-row {
+          flex-grow: 1;
+        }
+        &.actions-row {
+          max-width: 80px;
+        }
+        &.created-at-row {
+          max-width: 120px;
+          min-width: 120px;
+          padding: 20px 0;
+        }
+      }
+    }
+  }
+}
+
+@media all and (max-width: 768px) {
+  .forms-list-header {
+    .search-block {
+      flex-wrap: wrap;
+      .btn {
+        width: 100%;
+      }
+      .searchable-input {
+        width: 100%;
+        margin-bottom: 15px;
+      }
+    }
+  }
+}

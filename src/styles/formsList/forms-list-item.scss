@@ -47,3 +47,23 @@
     }
   }
 }
+
+@media all and (max-width: 1200px) {
+  .forms-list-item {
+    .col {
+      &.form-title, &.actions-col, &.created-at {
+        padding: 0 15px;
+        min-width: 80px;
+      }
+      &.form-title {
+        flex-grow: 1;
+      }
+      &.actions-col {
+        max-width: 80px;
+      }
+      &.created-at {
+        max-width: 120px;
+      }
+    }
+  }
+}

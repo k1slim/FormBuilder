@@ -4,7 +4,7 @@
 .forms-list-wrapper, .form {
   height: calc(100vh - 140px);
   margin: 40px;
-  border: $border-color;
+  border: 1px solid $border-color;
   border-radius: $border-radius;
   background: white;
 }
@@ -19,5 +19,12 @@
     flex-grow: 1;
     overflow: auto;
     @include small-scroll;
+  }
+}
+
+@media all and (max-width: 768px) {
+  .forms-list-wrapper, .form {
+    margin: 20px 0;
+    border-radius: 0;
   }
 }
