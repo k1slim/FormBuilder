@@ -33,14 +33,7 @@ const cardTarget = {
     }
 };
 
-@DropTarget(TAB, cardTarget, connect => ({
-    connectDropTarget: connect.dropTarget()
-}))
-@DragSource(TAB, cardSource, (connect, monitor) => ({
-    connectDragSource: connect.dragSource(),
-    isDragging: monitor.isDragging()
-}))
-export default class DraggableTabContainer extends Component {
+class DraggableTabContainer extends Component {
     render() {
         const { connectDragSource, connectDropTarget } = this.props;
 
@@ -51,3 +44,10 @@ export default class DraggableTabContainer extends Component {
         ));
     }
 }
+
+export default DropTarget(TAB, cardTarget, connect => (
+    { connectDropTarget: connect.dropTarget() }
+))(DragSource(TAB, cardSource, (connect, monitor) => ({
+    connectDragSource: connect.dragSource(),
+    isDragging: monitor.isDragging()
+}))(DraggableTabContainer));

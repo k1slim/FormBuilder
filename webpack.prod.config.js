@@ -2,9 +2,10 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
+    mode: 'production',
+    node: false,
     entry: {
         src: path.resolve(__dirname, 'src/main.js')
-
     },
     output: {
         path: path.resolve(__dirname, 'src/dist'),
@@ -31,30 +32,20 @@ module.exports = {
                 use: ['style-loader', 'css-loader', 'sass-loader']
             },
             {
-                test: /\.json$/,
-                use: 'json-loader'
-            },
-            {
-                test: /\.(jpe?g|png|gif|svg)$/i,
-                loader: 'url?limit=1000!img?minimize&optimizationLevel=5&progressive=true'
+                test: /\.js?$/,
+                exclude: [/node_modules/],
+                enforce: 'pre',
+                use: ['eslint-loader']
             },
             {
                 test: /\.js?$/,
                 exclude: /node_modules/,
-                use: [
-                    {
-                        loader: 'babel-loader',
-                        options: {
-                            plugins: ['transform-decorators-legacy'],
-                            presets: ['env', 'react', 'stage-0']
-                        }
+                use: [{
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env', '@babel/preset-react']
                     }
-
-                ]
-            },
-            {
-                test: /\.html$/,
-                loader: 'html-loader'
+                }]
             }
         ]
     },

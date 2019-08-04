@@ -2,7 +2,7 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import createHistory from 'history/createBrowserHistory';
+import { createBrowserHistory } from 'history';
 import { ConnectedRouter } from 'connected-react-router';
 
 import configureStore from './store/configureStore';
@@ -11,7 +11,7 @@ import AppContainer from './components/main/AppContainer';
 import FormsListPage from './containers/formsList/FormsListPage';
 import FormPage from './containers/form/FormPage';
 
-const history = createHistory();
+const history = createBrowserHistory();
 const store = configureStore(history);
 
 const app = () => render(

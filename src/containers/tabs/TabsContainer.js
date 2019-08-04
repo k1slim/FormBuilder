@@ -18,7 +18,6 @@ import {
 
 import '../../styles/tabs/tabs.scss';
 
-@DragDropContext(HTML5Backend)
 class TabsContainer extends Component {
     constructor(props) {
         super(props);
@@ -128,4 +127,6 @@ const mapDispatchToProps = {
     deleteTab: actions.deleteTab
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(TabsContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(
+    DragDropContext(HTML5Backend)(TabsContainer)
+);

@@ -6,7 +6,7 @@ module.exports = {
     mode: 'development',
     node: false,
     entry: {
-        src: path.join(__dirname, 'src/main.js')
+        src: path.resolve(__dirname, 'src/main.js')
     },
     output: {
         path: path.resolve(__dirname, 'src/dist'),
@@ -23,7 +23,7 @@ module.exports = {
         // new BundleAnalyzerPlugin()
     ],
 
-    devtool: 'source-map',
+    devtool: 'cheap-module-eval-source-map',
 
     devServer: {
         contentBase: path.resolve(__dirname, 'src'),
@@ -41,44 +41,29 @@ module.exports = {
 
     module: {
         rules: [
-            {
-                test: /\.css$/,
-                use: ['style-loader', 'css-loader']
-            },
+            // {
+            //     test: /\.css$/,
+            //     use: ['style-loader', 'css-loader']
+            // },
             {
                 test: /\.scss$/,
                 use: ['style-loader', 'css-loader', 'sass-loader']
             },
             {
-                test: /\.json$/,
-                use: 'json-loader'
-            },
-            {
-                test: /\.(jpe?g|png|gif|svg)$/i,
-                loader: 'url?limit=1000!img?minimize&optimizationLevel=5&progressive=true'
-            },
-            {
                 test: /\.js?$/,
                 exclude: [/node_modules/],
                 enforce: 'pre',
-                use: [
-                    {
-                        loader: 'eslint-loader'
-                    }
-                ]
+                use: ['eslint-loader']
             },
             {
                 test: /\.js?$/,
                 exclude: /node_modules/,
-                use: [
-                    {
-                        loader: 'babel-loader',
-                        options: {
-                            plugins: ['transform-decorators-legacy'],
-                            presets: ['env', 'react', 'stage-0']
-                        }
+                use: [{
+                    loader: 'babel-loader',
+                    options: {
+                        presets: ['@babel/preset-env', '@babel/preset-react']
                     }
-                ]
+                }]
             }
         ]
     },
