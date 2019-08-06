@@ -6,40 +6,46 @@ import '../../styles/elements/button.scss';
 
 const Button = (props) => {
     const {
-        text,
-        disabled,
+        as: Component,
         size,
         type,
+        children,
         className,
-        onClick
+        appearance,
+        onClick,
+        disabled
     } = props;
 
     return (
-        <button
-            className={classNames('btn', size, type, { [className]: className })}
-            disabled={disabled}
-            type="button"
+        <Component
+            type={type}
+            className={classNames('btn', size, appearance, className)}
             onClick={onClick}
+            disabled={disabled}
         >
-            {text}
-        </button>
+            {children}
+        </Component>
     );
 };
 
 Button.defaultProps = {
-    disabled: false,
+    as: 'button',
+    type: 'button',
+    appearance: 'primary',
     size: 'medium',
     className: '',
-    type: 'primary'
+    disabled: false
 };
 
 Button.propTypes = {
-    text: PropTypes.string.isRequired,
-    disabled: PropTypes.bool,
+    as: PropTypes.elementType,
     size: PropTypes.oneOf(['small', 'medium', 'large']),
-    type: PropTypes.oneOf(['primary', 'secondary']),
+    type: PropTypes.oneOf(['button', 'submit', 'reset']),
+    children: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
     className: PropTypes.string,
-    onClick: PropTypes.func.isRequired
+    appearance: PropTypes.oneOf(['primary', 'secondary']),
+    onClick: PropTypes.func.isRequired,
+    disabled: PropTypes.bool
 };
 
 export default Button;

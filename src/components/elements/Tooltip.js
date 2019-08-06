@@ -4,17 +4,25 @@ import TooltipLib from 'rc-tooltip';
 
 const TOOLTIP_DELAY = 0.4;
 
-const Tooltip = props => (
-    <TooltipLib
-        overlay={props.overlay}
-        placement={props.placement}
-        mouseEnterDelay={TOOLTIP_DELAY}
-        align={{
-            offset: [0, -10]
-        }}>
-        {props.children}
-    </TooltipLib>
-);
+const Tooltip = (props) => {
+    const {
+        overlay,
+        placement,
+        children
+    } = props;
+
+    return (
+        <TooltipLib
+            overlay={overlay}
+            placement={placement}
+            mouseEnterDelay={TOOLTIP_DELAY}
+            align={{
+                offset: [0, -10]
+            }}>
+            {children}
+        </TooltipLib>
+    );
+};
 
 Tooltip.defaultProps = {
     placement: 'top'
@@ -22,7 +30,8 @@ Tooltip.defaultProps = {
 
 Tooltip.propTypes = {
     overlay: PropTypes.string.isRequired,
-    placement: PropTypes.string
+    placement: PropTypes.string,
+    children: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired
 };
 
 export default Tooltip;
